@@ -11,7 +11,7 @@
         <version>9</version>
     </parent>
 
-    <url>https://github.com/danielwegener/logback-kafka-appender</url>
+    <url>https://github.com/bullet-tooth/logback-kafka-appender</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -33,14 +33,14 @@
     </properties>
 
     <issueManagement>
-        <url>https://github.com/danielwegener/logback-kafka-appender/issues</url>
+        <url>https://github.com/bullet-tooth/logback-kafka-appender/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:danielwegener/logback-kafka-appender.git</connection>
-        <developerConnection>scm:git:git@github.com:danielwegener/logback-kafka-appender.git</developerConnection>
-        <url>git@github.com:danielwegener/logback-kafka-appender.git</url>
+        <connection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</connection>
+        <developerConnection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</developerConnection>
+        <url>git@github.com:bullet-tooth/logback-kafka-appender.git</url>
         <tag>HEAD</tag>
     </scm>
 
