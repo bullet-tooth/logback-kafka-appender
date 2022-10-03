@@ -22,12 +22,13 @@
 
     <properties>
         <!--General stuff-->
-        <targetJdk>1.8</targetJdk>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
-        <maven.compiler.source>${targetJdk}</maven.compiler.source>
-        <maven.compiler.target>${targetJdk}</maven.compiler.target>
         <encoding>UTF-8</encoding>
+
         <slf4j.version>1.7.25</slf4j.version>
         <kafka.version>2.1.1</kafka.version>
     </properties>
@@ -51,10 +52,15 @@
             <url>https://github.com/danielwegener</url>
             <id>danielwegener</id>
         </developer>
+        <developer>
+            <email>dear-fairer0c@icloud.com</email>
+            <name>Oleg Bondar</name>
+            <url>https://github.com/bullet-tooth</url>
+            <id>olegbondar</id>
+        </developer>
     </developers>
 
     <inceptionYear>2015</inceptionYear>
-
 
     <dependencies>
         <dependency>
