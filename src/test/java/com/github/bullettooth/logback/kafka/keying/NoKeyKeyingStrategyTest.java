@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.nullValue;
 
-
 public class NoKeyKeyingStrategyTest {
     private final NoKeyKeyingStrategy unit = new NoKeyKeyingStrategy();
 

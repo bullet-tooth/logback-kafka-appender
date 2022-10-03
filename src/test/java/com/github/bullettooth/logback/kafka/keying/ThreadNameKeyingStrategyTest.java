@@ -11,7 +11,6 @@ import java.nio.ByteBuffer;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-
 public class ThreadNameKeyingStrategyTest {
     private final ThreadNameKeyingStrategy unit = new ThreadNameKeyingStrategy();
     private final LoggerContext ctx = new LoggerContext();
