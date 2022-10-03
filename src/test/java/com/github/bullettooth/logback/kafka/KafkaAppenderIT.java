@@ -26,6 +26,7 @@ import org.junit.rules.ErrorCollector;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collections;
@@ -117,7 +118,6 @@ public class KafkaAppenderIT {
 
     @Test
     public void testLogging() {
-
         final int messageCount = 2048;
         final int messageSize = 1024;
 
@@ -160,7 +160,7 @@ public class KafkaAppenderIT {
                 byte[] msg = aPoll.value();
                 byte[] msgPrefix = new byte[32];
                 System.arraycopy(msg, 0, msgPrefix, 0, 32);
-                final String messageFromKafka = new String(msgPrefix, UTF8);
+                final String messageFromKafka = new String(msgPrefix, StandardCharsets.UTF_8);
                 int delimiter = messageFromKafka.indexOf(';');
                 final int msgNo = Integer.parseInt(messageFromKafka.substring(0, delimiter));
                 messages.set(msgNo, false);
@@ -172,9 +172,5 @@ public class KafkaAppenderIT {
         assertEquals(messageCount, readMessages);
         assertThat(fallbackLoggingEvents, empty());
         assertEquals("all messages should have been read", BitSet.valueOf(new byte[0]), messages);
-
     }
-
-    private static final Charset UTF8 = Charset.forName("UTF-8");
-
 }

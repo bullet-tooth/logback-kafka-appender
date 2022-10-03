@@ -73,5 +73,4 @@ public class AsynchronousDeliveryStrategyTest {
 
         verify(failedDeliveryCallback).onFailedDelivery(eq("msg"), same(exception));
     }
-
 }

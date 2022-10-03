@@ -12,12 +12,9 @@ import java.nio.ByteBuffer;
 
 
 public class ContextNameKeyingStrategyTest {
-
     private final ContextNameKeyingStrategy unit = new ContextNameKeyingStrategy();
-
     private final LoggerContext ctx = new LoggerContext();
     private static final String LOGGER_CONTEXT_NAME = "loggerContextName";
-
 
     @Test
     public void shouldPartitionByEventThreadName() {
@@ -26,6 +23,4 @@ public class ContextNameKeyingStrategyTest {
         final ILoggingEvent evt = new LoggingEvent("fqcn", ctx.getLogger("logger"), Level.ALL, "msg", null, new Object[0]);
         Assert.assertThat(unit.createKey(evt), Matchers.equalTo(ByteBuffer.allocate(4).putInt(LOGGER_CONTEXT_NAME.hashCode()).array()));
     }
-
-
 }
