@@ -13,7 +13,7 @@ import java.util.UUID;
 
 
 public abstract class WithKafkaContainer {
-    protected final KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.1.4"));
+    protected final KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.2.2"));
 
     @Before
     public void setUp() {
