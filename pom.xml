@@ -218,8 +218,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
-                <configuration>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -251,7 +249,7 @@
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Automatic-Module-Name>com.github.danielwegener.logback.kafka</Automatic-Module-Name>
+                            <Automatic-Module-Name>com.github.bullettooth.logback.kafka</Automatic-Module-Name>
                         </manifestEntries>
                     </archive>
                 </configuration>
