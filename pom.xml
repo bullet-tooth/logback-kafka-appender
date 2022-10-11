@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.danielwegener</groupId>
+    <groupId>com.github.bullettooth</groupId>
     <artifactId>logback-kafka-appender</artifactId>
     <version>0.2.0-SNAPSHOT</version>
 
@@ -93,6 +93,12 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -203,7 +209,7 @@
                                 <requireMavenVersion>
                                     <version>3.5.0</version>
                                 </requireMavenVersion>
-<!--                                <dependencyConvergence/>-->
+                                <dependencyConvergence/>
                             </rules>
                         </configuration>
                     </execution>
