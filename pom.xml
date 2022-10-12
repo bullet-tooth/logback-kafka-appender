@@ -49,7 +49,6 @@
         <compiler-plugin.version>3.8.0</compiler-plugin.version>
         <jar-plugin.version>3.1.1</jar-plugin.version>
         <source-plugin.version>3.0.1</source-plugin.version>
-        <coveralls-plugin.version>4.3.0</coveralls-plugin.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
         <failsafe-plugin.version>2.22.1</failsafe-plugin.version>
         <bnd-plugin.version>5.3.0</bnd-plugin.version>
@@ -326,14 +325,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.eluder.coveralls</groupId>
-                <artifactId>coveralls-maven-plugin</artifactId>
-                <version>${coveralls-plugin.version}</version>
-                <configuration>
-                    <repoToken>${COVERALL_TOKEN}</repoToken>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
