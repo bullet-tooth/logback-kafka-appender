@@ -18,11 +18,11 @@ import org.slf4j.LoggerFactory;
 @AxisRange(min = 0, max = 5)
 @BenchmarkMethodChart(filePrefix = "benchmark-lists")
 @BenchmarkHistoryChart(labelWith = LabelType.CUSTOM_KEY, maxRuns = 20)
-public class KafkaAppenderBenchmark {
+@Ignore("Do not run at every run")
+public class KafkaAppenderBenchmarkTest {
 
     @Rule
     public TestRule benchmarkRun = new BenchmarkRule();
-
     private ch.qos.logback.classic.Logger logger;
 
     @Before
@@ -33,7 +33,6 @@ public class KafkaAppenderBenchmark {
 
     @After
     public void after() {
-
     }
 
     @Ignore
@@ -44,5 +43,4 @@ public class KafkaAppenderBenchmark {
             logger.info("A VERY IMPORTANT LOG MESSAGE {}", i);
         }
     }
-
 }

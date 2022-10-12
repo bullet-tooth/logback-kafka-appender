@@ -15,6 +15,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * DeliveryStrategy that waits on the producer if the output buffer is full.
  * The wait timeout is configurable with {@link BlockingDeliveryStrategy#setTimeout(long)}
+ *
  * @since 0.0.1
  * @deprecated Use {@link AsynchronousDeliveryStrategy} instead.
  */
@@ -24,10 +25,9 @@ public class BlockingDeliveryStrategy extends ContextAwareBase implements Delive
     private long timeout = 0L;
 
     @Override
-    public <K, V, E> boolean send(Producer<K, V> producer, ProducerRecord<K, V> record, E event, FailedDeliveryCallback<E> failureCallback) {
+    public <K, V, E> boolean send(Producer<K, V> producer, ProducerRecord<K, V> producerRecord, E event, FailedDeliveryCallback<E> failureCallback) {
         try {
-
-            final Future<RecordMetadata> future = producer.send(record);
+            final Future<RecordMetadata> future = producer.send(producerRecord);
             if (timeout > 0L) future.get(timeout, TimeUnit.MILLISECONDS);
             else if (timeout == 0) future.get();
             return true;
@@ -49,6 +49,7 @@ public class BlockingDeliveryStrategy extends ContextAwareBase implements Delive
      *     <li>{@code timeout > 0}: Wait for {@code timeout} milliseconds</li>
      *     <li>{@code timeout == 0}: Wait infinitely
      * </ul>
+     *
      * @param timeout a timeout in {@link TimeUnit#MILLISECONDS}.
      */
     public void setTimeout(long timeout) {

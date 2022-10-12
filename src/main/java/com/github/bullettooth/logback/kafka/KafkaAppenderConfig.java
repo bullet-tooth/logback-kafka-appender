@@ -11,7 +11,7 @@ import com.github.bullettooth.logback.kafka.keying.NoKeyKeyingStrategy;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.apache.kafka.clients.producer.ProducerConfig.*;
+import static org.apache.kafka.clients.producer.ProducerConfig.BOOTSTRAP_SERVERS_CONFIG;
 
 /**
  * @since 0.0.1
@@ -28,7 +28,7 @@ public abstract class KafkaAppenderConfig<E> extends UnsynchronizedAppenderBase<
 
     protected boolean appendTimestamp = true;
 
-    protected Map<String,Object> producerConfig = new HashMap<String, Object>();
+    protected Map<String,Object> producerConfig = new HashMap<>();
 
     protected boolean checkPrerequisites() {
         boolean errorFree = true;

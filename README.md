@@ -10,6 +10,15 @@
 
 [![codecov](https://codecov.io/gh/bullet-tooth/logback-kafka-appender/branch/master/graph/badge.svg?token=KLBHTHRXQG)](https://codecov.io/gh/bullet-tooth/logback-kafka-appender)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
+
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
+
+
 This appender lets your application publish its application logs directly to Apache Kafka.
 
 ## Logback incompatibility Warning 
