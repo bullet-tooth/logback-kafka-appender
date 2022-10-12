@@ -7,7 +7,6 @@ import com.carrotsearch.junitbenchmarks.annotation.AxisRange;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 import com.carrotsearch.junitbenchmarks.annotation.LabelType;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Rule;
@@ -29,10 +28,6 @@ public class KafkaAppenderBenchmarkTest {
     public void before() {
         LoggerFactory.getLogger("triggerLogInitialization");
         logger = (Logger) LoggerFactory.getLogger("IT");
-    }
-
-    @After
-    public void after() {
     }
 
     @SuppressWarnings("java:S2699")
