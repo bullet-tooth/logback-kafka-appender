@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  MAVEN_CLI_OPTS: --fail-at-end --errors -Dstyle.color=always
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,10 +20,10 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
       - name: Build with Maven
-        run: ./mvnw --fail-at-end --errors clean verify
+        run: ./mvnw $MAVEN_CLI_OPTS clean verify
 
       - name: Generate Code Coverage Report
-        run: ./mvnw jacoco:report jacoco:report-integration
+        run: ./mvnw $MAVEN_CLI_OPTS jacoco:report jacoco:report-integration
 
       - name: Upload Code Coverage Report
         uses: codecov/codecov-action@v3
