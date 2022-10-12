@@ -1,19 +1,10 @@
 # logback-kafka-appender
 
-> **Archive Warning**:
-> This project is no longer maintained (actually for some time now). I just do not find time to maintain this project in my free time. To make this clear I decided to better archive this project on github (and closing the unmoderated gitter channel) instead of just not reacting to new questions, issues and PRs. This may influence your decision to use this project although there still seem to be some happy users and stargazers.
-> I'll be happy to unarchive this project if someone is willing to take over maintenance or link to an active fork. 
-
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender)
-
 [![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml)
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
-
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
-
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
-
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 
 
