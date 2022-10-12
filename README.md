@@ -6,9 +6,9 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender)
 
-[![Build master with Maven](https://github.com/danielwegener/logback-kafka-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/danielwegener/logback-kafka-appender/actions/workflows/maven.yml)
+[![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml)
 
-[![codecov](https://codecov.io/gh/danielwegener/logback-kafka-appender/branch/master/graph/badge.svg?token=qHPWPEAnGU)](https://codecov.io/gh/danielwegener/logback-kafka-appender)
+[![codecov](https://codecov.io/gh/bullet-tooth/logback-kafka-appender/branch/master/graph/badge.svg?token=KLBHTHRXQG)](https://codecov.io/gh/bullet-tooth/logback-kafka-appender)
 
 This appender lets your application publish its application logs directly to Apache Kafka.
 

@@ -9,7 +9,7 @@
         <keyingStrategy class="com.github.bullettooth.logback.kafka.keying.HostNameKeyingStrategy" />
         <deliveryStrategy class="com.github.bullettooth.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
 
-        <producerConfig>bootstrap.servers=localhost:9092</producerConfig>
+        <producerConfig>bootstrap.servers=${KAFKA_URL}</producerConfig>
     </appender>
     <logger name="LogbackIntegrationIT" additivity="false" level="info">
         <appender-ref ref="KafkaAppender"/>
