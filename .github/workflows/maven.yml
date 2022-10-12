@@ -18,10 +18,10 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
       - name: Build with Maven
-        run: ./mvnw --batch-mode --fail-at-end --errors --update-snapshots  -Dstyle.color=always clean verify
+        run: ./mvnw --fail-at-end --errors clean verify
 
       - name: Generate Code Coverage Report
-        run: ./mvnw -Dstyle.color=always jacoco:report jacoco:report-integration
+        run: ./mvnw jacoco:report jacoco:report-integration
 
       - name: Upload Code Coverage Report
         uses: codecov/codecov-action@v3
