@@ -27,14 +27,9 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
     private static final String KAFKA_LOGGER_PREFIX = KafkaProducer.class.getPackage().getName().replaceFirst("\\.producer$", "");
 
     private LazyProducer lazyProducer = null;
-    private final AppenderAttachableImpl<E> aai = new AppenderAttachableImpl<E>();
-    private final ConcurrentLinkedQueue<E> queue = new ConcurrentLinkedQueue<E>();
-    private final FailedDeliveryCallback<E> failedDeliveryCallback = new FailedDeliveryCallback<E>() {
-        @Override
-        public void onFailedDelivery(E evt, Throwable throwable) {
-            aai.appendLoopOnAppenders(evt);
-        }
-    };
+    private final AppenderAttachableImpl<E> aai = new AppenderAttachableImpl<>();
+    private final ConcurrentLinkedQueue<E> queue = new ConcurrentLinkedQueue<>();
+    private final FailedDeliveryCallback<E> failedDeliveryCallback = (evt, throwable) -> aai.appendLoopOnAppenders(evt);
 
     public KafkaAppender() {
         // setting these as config values sidesteps an unnecessary warning (minor bug in KafkaProducer)
@@ -45,7 +40,7 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
     @Override
     public void doAppend(E e) {
         ensureDeferredAppends();
-        if (e instanceof ILoggingEvent && ((ILoggingEvent)e).getLoggerName().startsWith(KAFKA_LOGGER_PREFIX)) {
+        if (e instanceof ILoggingEvent && ((ILoggingEvent) e).getLoggerName().startsWith(KAFKA_LOGGER_PREFIX)) {
             deferAppend(e);
         } else {
             super.doAppend(e);
@@ -121,11 +116,11 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
 
         final Long timestamp = isAppendTimestamp() ? getTimestamp(e) : null;
 
-        final ProducerRecord<byte[], byte[]> record = new ProducerRecord<>(topic, partition, timestamp, key, payload);
+        final ProducerRecord<byte[], byte[]> producerRecord = new ProducerRecord<>(topic, partition, timestamp, key, payload);
 
         final Producer<byte[], byte[]> producer = lazyProducer.get();
         if (producer != null) {
-            deliveryStrategy.send(lazyProducer.get(), record, e, failedDeliveryCallback);
+            deliveryStrategy.send(lazyProducer.get(), producerRecord, e, failedDeliveryCallback);
         } else {
             failedDeliveryCallback.onFailedDelivery(e, null);
         }
@@ -162,24 +157,20 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
      * @see <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-3.4/org/apache/commons/lang3/concurrent/LazyInitializer.html">LazyInitializer</a>
      */
     private class LazyProducer {
-
         private volatile Producer<byte[], byte[]> producer;
 
         public Producer<byte[], byte[]> get() {
-            Producer<byte[], byte[]> result = this.producer;
-            if (result == null) {
-                synchronized(this) {
-                    result = this.producer;
-                    if(result == null) {
-                        this.producer = result = this.initialize();
+            if (producer == null) {
+                synchronized (this) {
+                    if (producer == null) {
+                        this.producer = this.initialize();
                     }
                 }
             }
-
-            return result;
+            return producer;
         }
 
-        protected Producer<byte[], byte[]> initialize() {
+        private Producer<byte[], byte[]> initialize() {
             Producer<byte[], byte[]> producer = null;
             try {
                 producer = createProducer();
@@ -189,7 +180,8 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
             return producer;
         }
 
-        public boolean isInitialized() { return producer != null; }
+        public boolean isInitialized() {
+            return producer != null;
+        }
     }
-
 }
