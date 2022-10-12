@@ -18,26 +18,12 @@ jobs:
           distribution: 'adopt'
           cache: 'maven'
       - name: Build with Maven
-        run: ./mvnw --batch-mode --fail-at-end --errors --update-snapshots verify
+        run: ./mvnw --batch-mode --fail-at-end --errors --update-snapshots  -Dstyle.color=always clean verify
 
-  coverage:
-    name: 'Coverage'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK 8
-        uses: actions/setup-java@v3
-        with:
-          java-version: '8'
-          distribution: 'adopt'
-          cache: 'maven'
-      - name: Install dependencies
-        run: ./mvnw install -Pinclude-extra-modules -DskipTests=true -DskipITs=true -Darchetype.test.skip=true -Dmaven.javadoc.skip=true --batch-mode -Dstyle.color=always --show-version
-      - name: Test (Coverage)
-        run: ./mvnw jacoco:prepare-agent jacoco:prepare-agent-integration verify jacoco:report jacoco:report-integration -Dstyle.color=always
+      - name: Generate Code Coverage Report
+        run: ./mvnw -Dstyle.color=always jacoco:report jacoco:report-integration
 
-      - name: Upload Code Coverage
+      - name: Upload Code Coverage Report
         uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
-          files: ./target/site/jacoco/jacoco.xml,./target/site/jacoco-it/jacoco.xml
