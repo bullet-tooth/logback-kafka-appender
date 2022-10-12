@@ -37,7 +37,7 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Analyze by Sonar
-        run: ./mvnw $MAVEN_CLI_OPTS org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage
+        run: ./mvnw $MAVEN_CLI_OPTS org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Pcoverage -Dsonar.projectKey=bullet-tooth_logback-kafka-appender
         env:
           # Needed to get some information about the pull request, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
