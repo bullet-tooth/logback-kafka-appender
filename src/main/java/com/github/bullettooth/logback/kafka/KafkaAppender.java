@@ -171,13 +171,12 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
         }
 
         private Producer<byte[], byte[]> initialize() {
-            Producer<byte[], byte[]> producer = null;
             try {
-                producer = createProducer();
+                return createProducer();
             } catch (Exception e) {
                 addError("error creating producer", e);
+                return null;
             }
-            return producer;
         }
 
         public boolean isInitialized() {
