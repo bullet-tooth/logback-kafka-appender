@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 @AxisRange(min = 0, max = 5)
 @BenchmarkMethodChart(filePrefix = "benchmark-lists")
 @BenchmarkHistoryChart(labelWith = LabelType.CUSTOM_KEY, maxRuns = 20)
-@Ignore("Do not run at every run")
+@Ignore("Do not run during build")
 public class KafkaAppenderBenchmarkTest {
 
     @Rule
@@ -35,10 +35,10 @@ public class KafkaAppenderBenchmarkTest {
     public void after() {
     }
 
-    @Ignore
+    @SuppressWarnings("java:S2699")
     @BenchmarkOptions(benchmarkRounds = 10, warmupRounds = 2, concurrency = 8)
     @Test
-    public void benchmark() throws InterruptedException {
+    public void benchmark() {
         for (int i = 0; i < 100000; ++i) {
             logger.info("A VERY IMPORTANT LOG MESSAGE {}", i);
         }
