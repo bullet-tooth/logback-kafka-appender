@@ -2,11 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.github.bullettooth</groupId>
     <artifactId>logback-kafka-appender</artifactId>
     <version>0.2.0-SNAPSHOT</version>
 
     <url>https://github.com/bullet-tooth/logback-kafka-appender</url>
+    <inceptionYear>2015</inceptionYear>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -14,6 +16,32 @@
         </license>
 
     </licenses>
+
+    <developers>
+        <developer>
+            <email>daniel@wegener.me</email>
+            <name>Daniel Wegener</name>
+            <url>https://github.com/danielwegener</url>
+            <id>danielwegener</id>
+        </developer>
+        <developer>
+            <email>dear-fairer0c@icloud.com</email>
+            <name>Oleg Bondar</name>
+            <url>https://github.com/bullet-tooth</url>
+            <id>olegbondar</id>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</connection>
+        <developerConnection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</developerConnection>
+        <url>git@github.com:bullet-tooth/logback-kafka-appender.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <url>https://github.com/bullet-tooth/logback-kafka-appender/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
 
     <properties>
         <!--General stuff-->
@@ -41,7 +69,6 @@
         <project-info-plugin.version>3.4.1</project-info-plugin.version>
         <javadoc-plugin.version>3.4.1</javadoc-plugin.version>
         <surefire-report-plugin.version>2.22.2</surefire-report-plugin.version>
-        <spotbugs-plugin.version>4.7.2.0</spotbugs-plugin.version>
         <jacoco-plugin.version>0.8.6</jacoco-plugin.version>
         <enforcer-plugin.version>3.1.0</enforcer-plugin.version>
         <gpg-plugin.version>3.0.1</gpg-plugin.version>
@@ -52,37 +79,24 @@
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
         <failsafe-plugin.version>2.22.1</failsafe-plugin.version>
         <bnd-plugin.version>5.3.0</bnd-plugin.version>
+        <sonar-plugin.version>3.9.1.2184</sonar-plugin.version>
+
+        <!-- Other -->
+        <sonar.organization>bullet-tooth</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
-    <issueManagement>
-        <url>https://github.com/bullet-tooth/logback-kafka-appender/issues</url>
-        <system>GitHub Issues</system>
-    </issueManagement>
-
-    <scm>
-        <connection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</connection>
-        <developerConnection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</developerConnection>
-        <url>git@github.com:bullet-tooth/logback-kafka-appender.git</url>
-        <tag>HEAD</tag>
-    </scm>
-
-    <developers>
-        <developer>
-            <email>daniel@wegener.me</email>
-            <name>Daniel Wegener</name>
-            <url>https://github.com/danielwegener</url>
-            <id>danielwegener</id>
-        </developer>
-        <developer>
-            <email>dear-fairer0c@icloud.com</email>
-            <name>Oleg Bondar</name>
-            <url>https://github.com/bullet-tooth</url>
-            <id>olegbondar</id>
-        </developer>
-    </developers>
-
-    <inceptionYear>2015</inceptionYear>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -150,56 +164,16 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers-bom</artifactId>
-                <version>${testcontainers.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${project-info-plugin.version}</version>
-                <configuration>
-                    <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
-                    <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${surefire-report-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs-plugin.version}</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <threshold>Default</threshold>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco-plugin.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>${sonar-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -346,5 +320,33 @@
             </plugin>
         </plugins>
     </build>
-</project>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${project-info-plugin.version}</version>
+                <configuration>
+                    <dependencyDetailsEnabled>true</dependencyDetailsEnabled>
+                    <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${surefire-report-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
