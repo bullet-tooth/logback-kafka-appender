@@ -2,9 +2,12 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["master"]
+  workflow_run:
+    workflows: [Build with Maven (master)]
+    branches:
+      - master
+    types:
+      - completed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,7 +52,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: 'target/site/*'
+          path: 'target/site/'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
