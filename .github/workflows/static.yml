@@ -40,7 +40,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: 'maven'
-      - name: Build with Maven
+      - name: Generate site with Maven
         run: mvn $MAVEN_CLI_OPTS site:site -P release -D skipTests
 
       - name: Setup Pages
