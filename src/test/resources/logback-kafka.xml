@@ -1,13 +1,13 @@
 <configuration>
 
-   <appender name="KafkaAppender" class="com.github.bullettooth.logback.kafka.KafkaAppender">
+   <appender name="KafkaAppender" class="io.github.bullettooth.logback.kafka.KafkaAppender">
        <encoder>
            <pattern>%msg</pattern>
        </encoder>
 
         <topic>logs</topic>
-        <keyingStrategy class="com.github.bullettooth.logback.kafka.keying.HostNameKeyingStrategy" />
-        <deliveryStrategy class="com.github.bullettooth.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+        <keyingStrategy class="io.github.bullettooth.logback.kafka.keying.HostNameKeyingStrategy" />
+        <deliveryStrategy class="io.github.bullettooth.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
 
         <producerConfig>bootstrap.servers=${KAFKA_URL}</producerConfig>
     </appender>

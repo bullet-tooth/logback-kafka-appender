@@ -20,6 +20,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  MAVEN_CLI_OPTS: --fail-at-end --errors -Dstyle.color=always
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -30,13 +33,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: 'maven'
+      - name: Generate site with Maven
+        run: mvn $MAVEN_CLI_OPTS site:site -P release -D skipTests
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
-          path: '.'
+          path: 'target/site/*'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
