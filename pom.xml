@@ -237,7 +237,7 @@
                             <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                         </manifest>
                         <manifestEntries>
-                            <Automatic-Module-Name>com.github.bullettooth.logback.kafka</Automatic-Module-Name>
+                            <Automatic-Module-Name>io.github.bullettooth.logback.kafka</Automatic-Module-Name>
                         </manifestEntries>
                     </archive>
                 </configuration>
