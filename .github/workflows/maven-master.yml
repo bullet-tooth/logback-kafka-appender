@@ -40,7 +40,6 @@ jobs:
   publish-snapshot:
     runs-on: ubuntu-latest
     needs: build
-    environment: OSSRH
     steps:
       - uses: actions/checkout@v3
       - name: Set up Maven Central Repository

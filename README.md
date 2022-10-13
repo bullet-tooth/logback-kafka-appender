@@ -1,7 +1,7 @@
 # logback-kafka-appender
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender)
-[![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml)
+[![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
