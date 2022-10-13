@@ -24,6 +24,7 @@ public class BlockingDeliveryStrategy extends ContextAwareBase implements Delive
 
     private long timeout = 0L;
 
+    @SuppressWarnings("java:S2142")
     @Override
     public <K, V, E> boolean send(Producer<K, V> producer, ProducerRecord<K, V> producerRecord, E event, FailedDeliveryCallback<E> failureCallback) {
         try {

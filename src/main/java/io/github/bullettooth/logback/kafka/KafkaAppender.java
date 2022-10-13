@@ -157,6 +157,7 @@ public class KafkaAppender<E> extends KafkaAppenderConfig<E> {
      * @see <a href="https://commons.apache.org/proper/commons-lang/javadocs/api-3.4/org/apache/commons/lang3/concurrent/LazyInitializer.html">LazyInitializer</a>
      */
     private class LazyProducer {
+        @SuppressWarnings("java:S3077")
         private volatile Producer<byte[], byte[]> producer;
 
         public Producer<byte[], byte[]> get() {
