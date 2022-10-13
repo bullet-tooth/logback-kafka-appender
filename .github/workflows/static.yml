@@ -4,6 +4,8 @@ name: Deploy static content to Pages
 on:
   workflow_run:
     workflows: [Build with Maven (master)]
+    branches:
+      - master
     types:
       - completed
 
