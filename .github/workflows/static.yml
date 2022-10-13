@@ -20,6 +20,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  MAVEN_CLI_OPTS: --fail-at-end --errors -Dstyle.color=always
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
