@@ -50,9 +50,10 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
 
-      - name: Publish package
+      - name: Perform Release
         run: mvn $MAVEN_CLI_OPTS release:prepare release:perform -D releaseVersion=${{ github.event.inputs.releaseVersion }} -D developmentVersion=${{ github.event.inputs.developmentVersion }} -P release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
