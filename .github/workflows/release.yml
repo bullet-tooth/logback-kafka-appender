@@ -40,7 +40,7 @@ jobs:
           git config user.name "GitHub Actions"
 
       - name: Perform Release
-        run: mvn $MAVEN_CLI_OPTS release:prepare release:perform -D releaseVersion=${{ github.event.inputs.releaseVersion }} -D developmentVersion=${{ github.event.inputs.developmentVersion }} -P release -D skipTests
+        run: mvn $MAVEN_CLI_OPTS release:clean release:prepare release:perform -D releaseVersion=${{ github.event.inputs.releaseVersion }} -D developmentVersion=${{ github.event.inputs.developmentVersion }} -D skipTests -P release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
