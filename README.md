@@ -1,7 +1,8 @@
 # logback-kafka-appender
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender)
-[![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven.yml)
+[//]: # (TODO Uncomment when available on Central)
+[//]: # ([![Maven Central]&#40;https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg&#41;]&#40;https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender&#41;)
+[![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=coverage)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
@@ -10,40 +11,36 @@
 
 This appender lets your application publish its application logs directly to Apache Kafka.
 
-## Logback incompatibility Warning 
+## Migration from the `com.github.danielwegener:logback-kafka-appender:0.2.0-RC2`
 
-__Due to a breaking change in the Logback Encoder API you need to use at least logback version 1.2.__
+_For performing migration from the original `com.github.danielwegener:logback-kafka-appender:0.2.0-RC2` you
+just need to replace the package name for used components: `com.github.danielwegener.` -> `io.github.bullettooth.`_
+
 
 ## Full configuration example
 
 Add `logback-kafka-appender` and `logback-classic` as library dependencies to your project.
 
 ```xml
-[maven pom.xml]
-<dependency>
-    <groupId>com.github.danielwegener</groupId>
-    <artifactId>logback-kafka-appender</artifactId>
-    <version>0.2.0</version>
-    <scope>runtime</scope>
-</dependency>
-<dependency>
-    <groupId>ch.qos.logback</groupId>
-    <artifactId>logback-classic</artifactId>
-    <version>1.2.3</version>
-    <scope>runtime</scope>
-</dependency>
-```
-
-```scala
-// [build.sbt]
-libraryDependencies += "com.github.danielwegener" % "logback-kafka-appender" % "0.2.0"
-libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
+<!--[maven pom.xml]-->
+<dependencies>
+    <dependency>
+        <groupId>io.github.bullet-tooth</groupId>
+        <artifactId>logback-kafka-appender</artifactId>
+        <version>0.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.3.1</version>
+    </dependency>
+</dependencies>
 ```
 
 This is an example `logback.xml` that uses a common `PatternLayout` to encode a log message as a string.
 
 ```xml
-[src/main/resources/logback.xml]
+<!--[src/main/resources/logback.xml]-->
 <configuration>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -53,13 +50,13 @@ This is an example `logback.xml` that uses a common `PatternLayout` to encode a 
     </appender>
 
     <!-- This is the kafkaAppender -->
-    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+    <appender name="kafkaAppender" class="io.github.bullettooth.logback.kafka.KafkaAppender">
             <encoder>
                 <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
             </encoder>
             <topic>logs</topic>
-            <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy" />
-            <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+            <keyingStrategy class="io.github.bullettooth.logback.kafka.keying.NoKeyKeyingStrategy" />
+            <deliveryStrategy class="io.github.bullettooth.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
             
             <!-- Optional parameter to use a fixed partition -->
             <!-- <partition>0</partition> -->
@@ -87,7 +84,7 @@ You may also look at the [complete configuration examples](src/example/resources
 
 ### Compatibility
 
-logback-kafka-appender depends on `org.apache.kafka:kafka-clients:1.0.0:jar`. It can append logs to a kafka broker with version 0.9.0.0 or higher.
+logback-kafka-appender depends on `org.apache.kafka:kafka-clients:3.2.3`. 
 
 The dependency to kafka-clients is not shadowed and may be upgraded to a higher, api compatible, version through dependency overrides.
 
@@ -114,7 +111,7 @@ An example configuration could look like this:
 <configuration>
 
     <!-- This is the kafkaAppender -->
-    <appender name="kafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+    <appender name="kafkaAppender" class="io.github.bullettooth.logback.kafka.KafkaAppender">
     <!-- Kafka Appender configuration -->
     </appender>
 
@@ -133,7 +130,7 @@ An example configuration could look like this:
 
 #### Custom delivery strategies
 
-You may also roll your own delivery strategy. Just extend `com.github.danielwegener.logback.kafka.delivery.DeliveryStrategy`.
+You may also roll your own delivery strategy. Just extend `io.github.bullettooth.logback.kafka.delivery.DeliveryStrategy`.
 
 #### Fallback-Appender
 
@@ -203,7 +200,7 @@ If none of the above keying strategies satisfies your requirements, you can easi
 
 ```java
 package foo;
-import com.github.danielwegener.logback.kafka.keying.KeyingStrategy;
+import io.github.bullettooth.logback.kafka.keying.KeyingStrategy;
 
 /* This is a valid example but does not really make much sense */
 public class LevelKeyingStrategy implements KeyingStrategy<ILoggingEvent> {
@@ -217,7 +214,7 @@ public class LevelKeyingStrategy implements KeyingStrategy<ILoggingEvent> {
 As most custom logback component, your custom partitioning strategy may also implement the
 `ch.qos.logback.core.spi.ContextAware` and `ch.qos.logback.core.spi.LifeCycle` interfaces.
 
-A custom keying strategy may especially become handy when you want to use kafka's log compactation facility.
+A custom keying strategy may especially become handy when you want to use kafka's log compaction facility.
 
 ## FAQ
 
