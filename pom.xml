@@ -34,9 +34,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</connection>
-        <developerConnection>scm:git:git@github.com:bullet-tooth/logback-kafka-appender.git</developerConnection>
-        <url>git@github.com:bullet-tooth/logback-kafka-appender.git</url>
+        <connection>scm:git:https://github.com/bullet-tooth/logback-kafka-appender.git</connection>
+        <developerConnection>scm:git:https://github.com/bullet-tooth/logback-kafka-appender.git</developerConnection>
+        <url>https://github.com/bullet-tooth/logback-kafka-appender.git</url>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
