@@ -1,7 +1,7 @@
 # logback-kafka-appender
 
 [//]: # (TODO Uncomment when available on Central)
-[//]: # ([![Maven Central]&#40;https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender/badge.svg&#41;]&#40;https://maven-badges.herokuapp.com/maven-central/com.github.danielwegener/logback-kafka-appender&#41;)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.bullet-tooth/logback-kafka-appender/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.github.bullet-tooth/logback-kafka-appender)
 [![Build master with Maven](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml/badge.svg)](https://github.com/bullet-tooth/logback-kafka-appender/actions/workflows/maven-master.yml)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=bullet-tooth_logback-kafka-appender&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=bullet-tooth_logback-kafka-appender)
@@ -65,7 +65,7 @@ This is an example `logback.xml` that uses a common `PatternLayout` to encode a 
             <!-- <appendTimestamp>true</appendTimestamp> -->
 
             <!-- each <producerConfig> translates to regular kafka-client config (format: key=value) -->
-            <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#newproducerconfigs -->
+            <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#producerconfigs -->
             <!-- bootstrap.servers is the only mandatory producerConfig -->
             <producerConfig>bootstrap.servers=localhost:9092</producerConfig>
 
