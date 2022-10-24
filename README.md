@@ -65,7 +65,7 @@ This is an example `logback.xml` that uses a common `PatternLayout` to encode a 
             <!-- <appendTimestamp>true</appendTimestamp> -->
 
             <!-- each <producerConfig> translates to regular kafka-client config (format: key=value) -->
-            <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#newproducerconfigs -->
+            <!-- producer configs are documented here: https://kafka.apache.org/documentation.html#producerconfigs -->
             <!-- bootstrap.servers is the only mandatory producerConfig -->
             <producerConfig>bootstrap.servers=localhost:9092</producerConfig>
 
