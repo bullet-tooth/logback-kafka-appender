@@ -1,4 +1,4 @@
-name: Release
+name: Release with Maven
 
 on:
   workflow_dispatch:
@@ -15,25 +15,11 @@ on:
 env:
   MAVEN_CLI_OPTS: --fail-at-end --errors -Dstyle.color=always
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-          cache: 'maven'
-      - name: Build with Maven
-        run: mvn $MAVEN_CLI_OPTS clean verify
-
   publish-release:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Maven Central Repository
+      - name: Set up Java and Maven Central Repository
         uses: actions/setup-java@v3
         with:
           java-version: '11'
@@ -45,14 +31,18 @@ jobs:
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }} # Value of the GPG private key to import
           gpg-passphrase: MAVEN_GPG_PASSPHRASE # env variable for GPG private key passphrase
 
+      - name: Build with Maven
+        run: mvn $MAVEN_CLI_OPTS clean verify
+
       - name: Configure Git User
         run: |
           git config user.email "actions@github.com"
           git config user.name "GitHub Actions"
 
-      - name: Publish package
-        run: mvn $MAVEN_CLI_OPTS release:prepare release:perform -D releaseVersion=${{ github.event.inputs.releaseVersion }} -D developmentVersion=${{ github.event.inputs.developmentVersion }} -P release
+      - name: Perform Release
+        run: mvn $MAVEN_CLI_OPTS release:clean release:prepare release:perform -D releaseVersion=${{ github.event.inputs.releaseVersion }} -D developmentVersion=${{ github.event.inputs.developmentVersion }} -D skipTests -P release
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
