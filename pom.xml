@@ -85,7 +85,7 @@
         <source-plugin.version>3.2.1</source-plugin.version>
         <surefire-plugin.version>2.22.1</surefire-plugin.version>
         <failsafe-plugin.version>2.22.1</failsafe-plugin.version>
-        <bnd-plugin.version>5.3.0</bnd-plugin.version>
+        <bnd-plugin.version>6.3.1</bnd-plugin.version>
         <sonar-plugin.version>3.9.1.2184</sonar-plugin.version>
 
         <!-- Other -->
