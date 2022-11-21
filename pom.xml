@@ -63,7 +63,7 @@
         <encoding>UTF-8</encoding>
 
         <slf4j.version>2.0.3</slf4j.version>
-        <logback.version>1.4.4</logback.version>
+        <logback.version>1.4.5</logback.version>
         <!-- NB: should be aligned with testcontainers docker image at WithKafkaContainer.java.
         Also see: https://docs.confluent.io/platform/current/installation/versions-interoperability.html -->
         <kafka.version>3.2.3</kafka.version>
