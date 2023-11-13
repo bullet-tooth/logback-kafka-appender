@@ -82,7 +82,7 @@
         <gpg-plugin.version>3.0.1</gpg-plugin.version>
         <compiler-plugin.version>3.11.0</compiler-plugin.version>
         <jar-plugin.version>3.3.0</jar-plugin.version>
-        <source-plugin.version>3.2.1</source-plugin.version>
+        <source-plugin.version>3.3.0</source-plugin.version>
         <surefire-plugin.version>2.22.2</surefire-plugin.version>
         <failsafe-plugin.version>2.22.2</failsafe-plugin.version>
         <bnd-plugin.version>6.4.0</bnd-plugin.version>
